@@ -70,7 +70,7 @@
     width: 801px;
     height: 60px;
     left: 320px;
-    top: 710px;
+    bottom: 0px;
     border-radius: 10px;
 }
 
@@ -117,11 +117,14 @@
     height: 55px;
 
     left: 1350px;
-    top: 730px;
+    bottom: 0px;
 
     background: #040a22;
     border-radius: 10px;
 }
+
+
+
 
 
 
