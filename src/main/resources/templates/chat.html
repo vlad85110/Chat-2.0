@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"-->
+<script src="/app.js"></script>
+<link href="/main.css" rel="stylesheet">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<audio>
+    <source src="../static/Untitled.mp3" type="audio_file_type" id="audio">
+</audio>
+<head>
+    <title>Chat</title>
+</head>
+<body class="main">
+<meta charset="UTF-8">
+<div class="header"><a class="header-text">messages</a></div>
+<div class="body-css" id="body">
+    <div>
+        <div class="message" th:each="message:${messages}" id="messages">
+            <div class="message-name-box">
+                <a class="message-author" th:text="${message.getAuthor()}"
+                   th:href="@{/profile?id={id}(id=${message.getId()})}"></a>:
+            </div>
+            <div class="message-text-box">
+                <a class="message-text" th:text="${message.getText()}"></a>
+            </div>
+        </div>
+    </div>
+    <div id="new-messages">
+
+    </div>
+
+</div>
+<script>
+    document.getElementById('new-messages').scrollIntoView(true)
+    document.querySelector('#send-button').disabled = false;
+</script>
+
+<div class="type-field">
+    <form  onsubmit="return false;" id="mess-form">
+        <input class="input-field" type="text" id="message" autofocus/>
+        <button  id="send-button" class="send-button" onclick="sendMessage()">send</button>
+    </form>
+</div>
+
+<div class="people-online"><a class="header-text">Online</a></div>
+
+<div class="online" id="online">
+
+</div>
+
+<div class="exit">
+    <a href="/exit" class="header-text">exit</a>
+</div>
+<script>connect()</script>
+</body>
+</html>

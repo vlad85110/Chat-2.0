@@ -1,0 +1,129 @@
+.main {
+    background: #040a22;
+}
+
+.header {
+    height: 40px;
+    width: 799px;
+    margin-left: 320px;
+    border-radius: 10px;
+}
+
+.header-text {
+    font-family: "Roboto","Arial",sans-serif;
+    font-style: inherit;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 17px;
+
+    color: #ff9300;
+
+    padding-left: 25px;
+}
+
+.body-css {
+    position: absolute;
+    width: 799px;
+    height: 600px;
+    left: 320px;
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+
+.message {
+    font-family: "Roboto","Arial",sans-serif;
+    font-style: normal;
+    margin-left: 20px;
+}
+
+.message-text {
+    padding-left: 10px;
+    color: #000000;
+}
+
+.message-author {
+    padding-left: 10px;
+    color: #ff9300;
+}
+
+.message-name-box {
+    position: relative;
+    width: 300px;
+    height: auto;
+    margin-top: 15px;
+}
+
+.message-text-box {
+    position: relative;
+    width: 300px;
+    height: auto;
+    margin-bottom: 15px;
+
+    background: #00b0a6;
+    border-radius: 10px;
+    box-shadow: 5px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.type-field {
+    position: absolute;
+    width: 801px;
+    height: 60px;
+    left: 320px;
+    top: 710px;
+    border-radius: 10px;
+}
+
+.input-field {
+    position: absolute;
+    width: 648px;
+    height: 50px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #161e32;
+}
+
+.send-button {
+    position: absolute;
+    width: 110px;
+    height: 55px;
+    left: 680px;
+
+    background: #c3711c;
+    border-radius: 10px;
+
+    background: rgba(101, 100, 100, 0.56);
+}
+
+.people-online {
+    height: 40px;
+    width: 300px;
+    margin-top: -40px;
+
+    border-radius: 10px;
+}
+
+.online {
+    font-family: "Roboto","Arial",sans-serif;
+    margin-top: 10px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.exit {
+    position: absolute;
+    width: 290px;
+    height: 55px;
+
+    left: 1350px;
+    top: 730px;
+
+    background: #040a22;
+    border-radius: 10px;
+}
+
+
+
+
+

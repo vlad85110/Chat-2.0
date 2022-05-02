@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="/enter.css" rel="stylesheet">
+<link href="/main.css" rel="stylesheet">
+<link href="profile.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="main">
+<div class="info">
+    <p th:text="${person.getName()}" class="header-text">VALUE</p>
+    <p style="color: red" th:text="${status.getOffline()}" class="info-text">Val</p>
+    <p style="color: aqua" th:text="${status.getOnline()}" class="info-text">Val</p>
+</div>
+</body>
+</html>

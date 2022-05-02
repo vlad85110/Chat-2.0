@@ -1,0 +1,13 @@
+.info {
+    position: absolute;
+    top: 200px;
+    left: 650px;
+}
+
+.info-text {
+    position: absolute;
+    font-family: "Roboto","Arial",sans-serif;
+    font-style: inherit;
+
+    margin-left: 25px;
+}

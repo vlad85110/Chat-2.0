@@ -1,0 +1,41 @@
+.form {
+    position: absolute;
+    top: 200px;
+    left: 500px;
+}
+
+.password {
+    font-family: "Roboto","Arial",sans-serif;
+    font-style: inherit;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 17px;
+
+    color: #ff9300;
+
+    padding-left: 30px;
+}
+
+.register {
+    position: absolute;
+    font-family: "Roboto","Arial",sans-serif;
+    font-style: inherit;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 17px;
+
+    color: #ff9300;
+
+    left: 630px;
+    top: 280px;
+}
+
+.error {
+    position: absolute;
+    left: 630px;
+    top: 150px;
+    font-family: "Roboto","Arial",sans-serif;
+    font-style: inherit;
+
+    color: red;
+}

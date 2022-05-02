@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="/enter.css" rel="stylesheet">
+<link href="/main.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Join the chat</title>
+</head>
+<body class="main">
+<meta charset="UTF-8">
+
+<p th:text="${error.getText()}" class="error">Val</p>
+
+<form th:method="post" th:action="@{/enter}" th:object="${person}" class="form">
+    <label for="name" class="header-text">user name</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br>
+    <br>
+    <label for="password" class="password">password  </label>
+    <input type="password" th:field="*{strPassword}" id ="password">
+    <input type="submit" value="enter"/>
+</form>
+
+<a href="/register"  class="register">register</a>
+</body>
+</html>
