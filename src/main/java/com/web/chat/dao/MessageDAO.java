@@ -28,6 +28,6 @@ public class MessageDAO {
         var id = PersonDAO.getIdByName(name);
 
         template.update("INSERT INTO messages VALUES (?, ?, ?, ?)", message.getText(),
-               id, message.getTime(), name);
+               id, name, message.getTime());
     }
 }

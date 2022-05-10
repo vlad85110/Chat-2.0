@@ -4,8 +4,16 @@ let connection = false;
 let reconnect = null;
 let getOnline = null;
 
-let audio = new Audio(); // Создаём новый элемент Audio
-audio.src = 'Untitled.mp3';
+let messages = [];
+
+window.onblur = function () {
+    clearTimeout(getOnline)
+}
+
+window.onfocus = function () {
+    askOnline();
+    getOnline = setInterval(askOnline, 10000)
+}
 
 function onConnect () {
     document.querySelector('#send-button').disabled = false;
@@ -14,15 +22,11 @@ function onConnect () {
         showMessage(JSON.parse(string.body));
     });
 
-    console.log('connected')
-
-    askOnline();
-    getOnline = setInterval(askOnline, 10000)
+    stompClient.subscribe('/topic/list', function (list) {redrawMessages(JSON.parse(list.body))});
 }
 
 function onDisconnect() {
     document.querySelector('#send-button').disabled = true;
-    clearTimeout(getOnline)
     connection = false
     reconnect = setInterval(connect,5000)
 }
@@ -41,7 +45,15 @@ function connect() {
 function showMessage(message) {
     let text = message.text
     let author = message.author
+    let time = message.time
     let id = message.id
+
+    messages.push(time);
+    for (let i = messages.length - 1; i >= 0; i--) {
+        if (messages[i] > time) {
+            stompClient.send("/app/list", { }, null);
+        }
+    }
 
     let newMessage = document.createElement("div")
     newMessage.className = 'message'
@@ -53,8 +65,6 @@ function showMessage(message) {
     elem.appendChild(newMessage)
 
     newMessage.scrollIntoView(true)
-
-    let promise = audio.play();
 }
 
 function sendMessage() {
@@ -84,12 +94,6 @@ function getSession() {
 
 function askOnline() {
     let answer = httpGet("/chat/online")
-
-    /*if (answer.body == null) {
-        console.log('no changes')
-        return null;
-    }*/
-
     let onlineList = JSON.parse(answer)
 
     let online = document.querySelector('#online')
@@ -128,6 +132,28 @@ function createBody(text) {
     messageTextBox.appendChild(messageText)
 
     return messageTextBox
+}
+
+function redrawMessages(list) {
+    let messages = document.querySelector('#new-messages')
+    while (messages.firstChild) {
+        messages.removeChild(messages.firstChild);
+    }
+    messages = document.querySelector('#old-messages')
+    while (messages.firstChild) {
+        messages.removeChild(messages.firstChild);
+    }
+
+    for (let i = 0; i < list.length; i++) {
+        let newMessage = document.createElement("div")
+        newMessage.className = 'message'
+
+        newMessage.appendChild(createHeader(list[i].author, list[i].id))
+        newMessage.append(createBody(list[i].text))
+
+        let elem = document.getElementById('new-messages')
+        elem.appendChild(newMessage)
+    }
 }
 
 

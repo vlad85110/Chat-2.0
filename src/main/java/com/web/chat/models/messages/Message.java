@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class Message {
     private String text;
-    private Date time;
+    private long time;
     private int id;
     private String author;
 
-    public void setTime(Date time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
@@ -34,7 +34,7 @@ public class Message {
         return text;
     }
 
-    public Date getTime() {
+    public long getTime() {
         return time;
     }
 
@@ -43,7 +43,7 @@ public class Message {
     }
 
     public void setTime() {
-        time = new Date(System.currentTimeMillis());
+        time = System.currentTimeMillis();
     }
 
     public String getAuthor() {

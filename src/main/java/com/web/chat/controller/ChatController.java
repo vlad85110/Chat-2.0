@@ -32,6 +32,7 @@ public class ChatController {
     @GetMapping()
     public String chatFrame(Model model, @ModelAttribute("message") Message message, HttpServletRequest request) {
         var session = info.printClientInfo(request);
+        PeopleOnlineChecker.registerRequest(session);
         if (!PersonDAO.isAuthorized(session)) {
             return "redirect:/enter";
         }
@@ -54,6 +55,12 @@ public class ChatController {
         messageDAO.sendMessage(sendMessage, message.getSession());
 
         return sendMessage;
+    }
+
+    @MessageMapping("/list")
+    @SendTo("/topic/list")
+    public List<Message> sendAllMessages() {
+        return messageDAO.showAll();
     }
 
     @GetMapping("/online")

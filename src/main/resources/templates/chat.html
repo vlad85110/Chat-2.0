@@ -16,7 +16,7 @@
 <meta charset="UTF-8">
 <div class="header"><a class="header-text">messages</a></div>
 <div class="body-css" id="body">
-    <div>
+    <div id="old-messages">
         <div class="message" th:each="message:${messages}" id="messages">
             <div class="message-name-box">
                 <a class="message-author" th:text="${message.getAuthor()}"
